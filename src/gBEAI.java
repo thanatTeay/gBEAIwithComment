@@ -104,6 +104,7 @@ public class gBEAI implements AIInterface {
 	//TTSSkillMap_Male ttsSkillMap_Zen;
 	TTSSkillMap_ZEN ttsSkillMap_Zen;
 	TTSSkillMap_LUD ttsSkillMap_Lud;
+	TTSSkillMap_Common ttsSkillMap_common;
 	String opponentActionPath;
 	String opponentCurrentAction;
 	String opponentPreviousAction;
@@ -255,7 +256,15 @@ public class gBEAI implements AIInterface {
 		//TODO
 //		if (opponentPreviousMove != ttsSkillMap.getActionRealName(this.frameData.getCharacter(!playerNumber).getAction().name())) {
 //			opponentPreviousMove = myCurrentMove;
-			myCurrentMove = ttsSkillMap_Zen.getActionRealName(this.frameData.getCharacter(playerNumber).getAction().name());
+		if(playerNumber)	
+		{
+			myCurrentMove = TTSSkillMap_Common.getActionRealName(this.frameData.getCharacter(playerNumber).getAction().name());
+
+		}
+		else if(!playerNumber) {
+			myCurrentMove = TTSSkillMap_Common.getActionRealName(this.frameData.getCharacter(!playerNumber).getAction().name());
+
+		}
 			
 			//Ishii CoG 2019
 //			if (myCurrentMove == "Ultimate Hadouken"){
@@ -284,7 +293,7 @@ public class gBEAI implements AIInterface {
 				}
 			} else {
 				if (tempOpponentActionList.size() != 0) {
-					myCurrentMove = tempOpponentActionList.get(ttsSkillMap_Zen.getRandomNumber(tempOpponentActionList.size()));
+					myCurrentMove = tempOpponentActionList.get(TTSSkillMap_Common.getRandomNumber(tempOpponentActionList.size()));
 					
 //					current = (float) myCurrentMoveDamageMax / (float) myMotion.get(Action.STAND_D_DF_FC.ordinal()).getAttackHitDamage();
 //					//System.out.println("Max=" + (float) myCurrentMoveDamageMax + "current" + (float) myMotion.get(Action.STAND_D_DF_FC.ordinal()).getAttackHitDamage());
@@ -435,6 +444,7 @@ public class gBEAI implements AIInterface {
 			getmyCurrentMoveInformation();
 			if(count == 3)
 			{
+				
 //				if(playerNumber) // P1 condition
 //				{
 //					checkHp = getmyHp - getoppHp;
@@ -555,9 +565,9 @@ public class gBEAI implements AIInterface {
 		deltaHp = getmyHp - getoppHp;
 		p2_gotDamaged = myMotion.get(this.frameData.getCharacter(isP1).getAction().ordinal()).getAttackHitDamage();
 		p1_gotDamaged = myMotion.get(this.frameData.getCharacter(!isP1).getAction().ordinal()).getAttackHitDamage();
-		if(isP1) // P1 condition
+		if(playerNumber) // P1 condition
 		{
-			TTSSkillMap_Common.setCharacter("Zen","Lud");
+			TTSSkillMap_Common.setCharacter("weqewqweq","zxvxcvxcvxv");
 			
 			if(deltaHp > 60) {
 				comment = TTSSkillMap_Common.generateCheerUpCommentaryWin();
@@ -570,9 +580,9 @@ public class gBEAI implements AIInterface {
 			}	
 			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
-		else if(!isP1)
+		else if(!playerNumber)
 		{
-			TTSSkillMap_Common.setCharacter("Lud","Zen");
+			TTSSkillMap_Common.setCharacter("aaaaaaaaaaa","ccccccccccccc");
 			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
 		//System.out.println("getDamage1 = "+getDamage1);

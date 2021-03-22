@@ -37,8 +37,8 @@ public class  TTSSkillMap_Common {
 	static public gBEAI beai;
 	
 	static public boolean isP1 = true;
-	static String  myName = "Zen";
-	static String  oppName = "Lud";
+	static String  myName = "asdasdasdasd";
+	static String  oppName = "12231212414";
 	
 	
 	
@@ -169,10 +169,10 @@ public class  TTSSkillMap_Common {
 			". That is a good move!",
 			". Wow, that happened really quick",
 			", really a good one",
-			"that " + oppName + " should be very careful",
+			" that " + oppName + " should be very careful",
 			". That'll be a great deal",
 			". Some damage here",
-			"that should tell " + oppName + " to quit this game",
+			" that should tell " + oppName + " to quit this game",
 			". It's a good deal of damage",
 			". That's a nice shot",
 			". That's perfect",
@@ -188,7 +188,7 @@ public class  TTSSkillMap_Common {
 	// health PDA 
 	
 	static String healthForwardQuestion[] = {
-			"There's a button there,",
+			"There's a button there",
 			"It's good to try to employ",
 			"It seems possible to"
 		
@@ -196,7 +196,7 @@ public class  TTSSkillMap_Common {
 	
 	static String healthBackwardQuestion[] = {
 			", that " + myName + " can rely on being pretty safe to hit",
-			"to get " + oppName + " punished",
+			" to get " + oppName + " punished",
 			", and knock " + oppName + " down"
 
 	};
