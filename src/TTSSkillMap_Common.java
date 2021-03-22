@@ -37,225 +37,276 @@ public class  TTSSkillMap_Common {
 	static public gBEAI beai;
 	
 	static public boolean isP1 = true;
-	static String  myName = "asdasdasdasd";
-	static String  oppName = "12231212414";
-	
-	
-	
-	
-	static void setCharacter(String myName0, String oppName0) {
+	static public String  myName = "Player1";
+	static public String  OppName = "Player2";
+
+	static void setCharacter(String myName0, String OppName0) {
 		myName = myName0;
-		oppName = oppName0;
+		OppName = OppName0;
+	}
+	
+	
+	static String getMyName(){
+		return myName;
+	}
+	
+	static String getOppName(){
+		return OppName;
 	}
 	
 	static String beginCommentary[] = {
-			"Hi everybody, welcome to the match!",
-			"Alright, welcome everybody!",
-			"Welcome! Let's see a match between " + myName + " and " + oppName + "",
-			"Welcome to the match",
-			"Welcome to " + myName + " versus " + oppName + ""
-
 	};
 	
-	static String beginCommentaryCn[] = {
-			
+	static String beginCommentaryCn[] = {			
 		};
 	
 	static String endCommentary[] = {
-			"It is a nice match",
-			"It is a wonderful match",
-			"See you again in the next match",
-			"Thank you for watching"
-		
 	};
 	
 	static String chat[] = {
-			"They are trying to attack each other",
-			"It would be a match of the century!",
-			"I have never seen it before",
-			"So attention to these two players",
-			"They try to play slowly in this match",
-			"Let's keep attention to these players",
-			"They are trying to predict each other",
-			"Haven't really seen this kind of challenging game so far"
-
 	};
 	
 	static String forwardActionInstruction[] = {
-		myName + " may",
-		myName + " should",
-		myName + " can"
 	};
 	
-	static String actionInstruction[] = {
-			"step back your foot for guarding",
-			"move forward to get close to the opponent",
-			"lean backward to move backward",
-			"lean forward for dashing",
-			"get away from your opponent",
-			"step back and jump to jump backward",
-			"use left punch to execute lights punch",
-			"use right punch to execute heavy punch",
-			"crouch to make the character crouch",
-			"step back and crouch to guard while crouching",
-			"crouch and left punch to execute weak punch while crouching",
-			"crouch and right punch to execute weak uppercut while crouching",
-			"use left Kick for executing light kick while crouching",
-			"use right kick to execute heavy kick while crouching",
-			"use two-handed punch while the opponent is close to throw the opponent",
-			"step back and two-handed punch while the opponent is close to heavily throw the opponent"
-			//"right kick to execute heavy kick while crouching.",
-			//"This skill can take the opponent down",
-			//"Two-handed punch while the opponent is close to throw the opponent",
-			//"Step back the right foot and two-handed punch while the opponent is close to heavily throw the opponent",
-			//"Right swing from back to front to execute sliding attack. This skill can take the opponent down",
-			//"This skill can take the opponent down",
-			//"Right-handed knifehand strike (karate chop) to execute forward flying attack",
-			//"Do Hadouken on your right side to execute projectile attack"
-
-			
-			
-			
-			
-//			23	Right Step Back for guarding	Step back your right foot for guarding
-//			22	He Right Step Forward for walking forward	Step forward your right foot for walking forward
-//			21	Lean Backward Left punch to execute weak punchfor moving backward	Lean backward to move backward
-//			20	Lean Forward for dashing	Lean forward for dashing
-//			19	Jump	Jump to make the character jump
-//			18	Right Step Back and Jump for jumping backward	Step back the right foot and jump to jump backward
-//			17	Right Step Front and Jump for jumping forward	Step front the right foot and jump to jump forward
-//			16	Left Punch for weak punching	
-//			15	Right Punch for heavy punching	Right punch to execute heavy punch
-//			14	Left Knee Strike for weak kicking	Raise up the left knee to execute weak kick
-//			13	Right Knee Strike for heavy kicking	Raise up the right knee to execute heavy kick
-//			12	Crouch	Crouch to make the character crouch
-//			11	Right Step Back and Crouch for guarding while crouching	Step back the right foot and crouch to guard while crouching
-//			10	Crouch and Left Punch for punching while crouching	Crouch and left punch to execute weak punch while crouching
-//			9	Crouch and Right Punch for throwing uppercut while crouching	Crouch and right punch to execute weak uppercut while crouching
-//			8	Left Kick for executing weak kick while crouching	Left kick to execute weak kick while crouching
-//			7	Right Kick for executing heavy kick while crouching	Right kick to execute heavy kick while crouching. This skill can take the opponent down.
-//			6	Two-handed Punch for throwing the opponent.	Two-handed punch while the opponent is close to throw the opponent.
-//			5	Right Step Back and Two-handed Punch for throwing the opponent heavily.	Step back the right foot and two-handed punch while the opponent is close to heavily throw the opponent
-//			4	Right Swing for executing sliding attack.	Right swing from back to front to execute sliding attack. This skill can take the opponent down.
-//			3	Left Uppercut for throwing uppercut	Left uppercut to execute heavy uppercut. This skill can take the opponent down.
-//			2	Right Knifehand Strike for executing forward flying attack.	Right-handed knifehand strike (karate chop) to execute forward flying attack.
-//			1	Hadouken for executing projectile attack.	Do Hadouken on your right side to execute projectile attack.
-	};
-
-// only describe player 2 now, " + oppName + " vs Garnet
+	static String actionInstruction[] = {};
 	static String actionForwardPositiveCommentary[] = {
-			myName + " used",
-			myName + " used",
-			"For an opportunity, " + myName + " used",
-			myName + " continues to use",
-			"Nice time to use",
-			"That's common to use",
-			"That's very nice to use",
-			myName + " knew when to use",
-			myName + " is pressing his opponent by using",
-			"Hit " + oppName + " by",
-			"For a chance, " + myName + " used",
-			"How skillfully, " + myName + " used",
-			myName + " released a powerful"
-			
-
 			};
 	
-	static String actionForwardNegativeCommentary[] = {
-	};
+	static String actionForwardNegativeCommentary[] = {	};
 				
-	static String actionBackwardPositiveCommentary[] = {
-			". Excellent for that",
-			". That is a good move!",
-			". Wow, that happened really quick",
-			", really a good one",
-			" that " + oppName + " should be very careful",
-			". That'll be a great deal",
-			". Some damage here",
-			" that should tell " + oppName + " to quit this game",
-			". It's a good deal of damage",
-			". That's a nice shot",
-			". That's perfect",
-			". " + oppName + " gotta be punished!",
-			". " + oppName + " will lose for sure!",
-			". Nice!"
-			
-			};
+	static String actionBackwardPositiveCommentary[] = {			};
 	
 	static String actionBackwardNegativeCommentary[] = {
 	};
 	
-	// health PDA 
+	static String healthForwardQuestion[] = {};
+	static String healthBackwardQuestion[] = {};	
+	static String healthPositiveCommentary[] = {};	
+	static String healthNegativeCommentary[] = {};	
+	static String cheerUpCommentaryWin[] = {};
+	static String cheerUpCommentaryLose[] = {};
+	static String cheerUpCommentarySame[] = {};
 	
-	static String healthForwardQuestion[] = {
-			"There's a button there",
-			"It's good to try to employ",
-			"It seems possible to"
+	
+	
+	static void prepareComment(Boolean isP10, String myName0, String OppName0) {
+		isP1 = isP10;
+		if(isP1){ setCharacter("Zen","Lud"); }
+		else { setCharacter("Lud","Zen"); }
 		
-	};
-	
-	static String healthBackwardQuestion[] = {
-			", that " + myName + " can rely on being pretty safe to hit",
-			" to get " + oppName + " punished",
-			", and knock " + oppName + " down"
 
-	};
-	
-	static String healthPositiveCommentary[] = {
-			"Yeah, " + myName + " successfully punished " + oppName + "!",
-			"Oh, I can't believe it! Such a pretty move!",
-			"Wow, Nice!",
-			"Hoo, nice timing!",
-			"That's fantastic!",
-			"Oh, that worked!",
-			"Excellent!",
-			"Wonderful!",
-			"Good game",
-			"Nice shot",
-			"Nice move",
-			"Good",
-			"That shot!!",
-			"Those moves are nice",
-			myName + " moves're great!!"
+		beginCommentary = new String[] {
+				"Hi everybody, welcome to the match!",
+				"Alright, welcome everybody!",
+				"Welcome! Let's see a match between " + getMyName() + " and " + getOppName() + "",
+				"Welcome to the match",
+				"Welcome to " + getMyName() + " versus " + getOppName() + ""
 
+		};
 		
-	};
+		
+		endCommentary = new String[]{
+				"It is a nice match",
+				"It is a wonderful match",
+				"See you again in the next match",
+				"Thank you for watching"
+			
+		};
+		
+		chat = new String[]{
+				"They are trying to attack each other",
+				"It would be a match of the century!",
+				"I have never seen it before",
+				"So attention to these two players",
+				"They try to play slowly in this match",
+				"Let's keep attention to these players",
+				"They are trying to predict each other",
+				"Haven't really seen this kind of challenging game so far"
+
+		};
+		
+		forwardActionInstruction = new String[]{
+			getMyName() + " may",
+			getMyName() + " should",
+			getMyName() + " can"
+		};
+		
+		actionInstruction = new String[]{
+				"step back your foot for guarding",
+				"move forward to get close to the opponent",
+				"lean backward to move backward",
+				"lean forward for dashing",
+				"get away from your opponent",
+				"step back and jump to jump backward",
+				"use left punch to execute lights punch",
+				"use right punch to execute heavy punch",
+				"crouch to make the character crouch",
+				"step back and crouch to guard while crouching",
+				"crouch and left punch to execute weak punch while crouching",
+				"crouch and right punch to execute weak uppercut while crouching",
+				"use left Kick for executing light kick while crouching",
+				"use right kick to execute heavy kick while crouching",
+				"use two-handed punch while the opponent is close to throw the opponent",
+				"step back and two-handed punch while the opponent is close to heavily throw the opponent"
+				//"right kick to execute heavy kick while crouching.",
+				//"This skill can take the opponent down",
+				//"Two-handed punch while the opponent is close to throw the opponent",
+				//"Step back the right foot and two-handed punch while the opponent is close to heavily throw the opponent",
+				//"Right swing from back to front to execute sliding attack. This skill can take the opponent down",
+				//"This skill can take the opponent down",
+				//"Right-handed knifehand strike (karate chop) to execute forward flying attack",
+				//"Do Hadouken on your right side to execute projectile attack"
+
+				
+				
+				
+				
+//				23	Right Step Back for guarding	Step back your right foot for guarding
+//				22	He Right Step Forward for walking forward	Step forward your right foot for walking forward
+//				21	Lean Backward Left punch to execute weak punchfor moving backward	Lean backward to move backward
+//				20	Lean Forward for dashing	Lean forward for dashing
+//				19	Jump	Jump to make the character jump
+//				18	Right Step Back and Jump for jumping backward	Step back the right foot and jump to jump backward
+//				17	Right Step Front and Jump for jumping forward	Step front the right foot and jump to jump forward
+//				16	Left Punch for weak punching	
+//				15	Right Punch for heavy punching	Right punch to execute heavy punch
+//				14	Left Knee Strike for weak kicking	Raise up the left knee to execute weak kick
+//				13	Right Knee Strike for heavy kicking	Raise up the right knee to execute heavy kick
+//				12	Crouch	Crouch to make the character crouch
+//				11	Right Step Back and Crouch for guarding while crouching	Step back the right foot and crouch to guard while crouching
+//				10	Crouch and Left Punch for punching while crouching	Crouch and left punch to execute weak punch while crouching
+//				9	Crouch and Right Punch for throwing uppercut while crouching	Crouch and right punch to execute weak uppercut while crouching
+//				8	Left Kick for executing weak kick while crouching	Left kick to execute weak kick while crouching
+//				7	Right Kick for executing heavy kick while crouching	Right kick to execute heavy kick while crouching. This skill can take the opponent down.
+//				6	Two-handed Punch for throwing the opponent.	Two-handed punch while the opponent is close to throw the opponent.
+//				5	Right Step Back and Two-handed Punch for throwing the opponent heavily.	Step back the right foot and two-handed punch while the opponent is close to heavily throw the opponent
+//				4	Right Swing for executing sliding attack.	Right swing from back to front to execute sliding attack. This skill can take the opponent down.
+//				3	Left Uppercut for throwing uppercut	Left uppercut to execute heavy uppercut. This skill can take the opponent down.
+//				2	Right Knifehand Strike for executing forward flying attack.	Right-handed knifehand strike (karate chop) to execute forward flying attack.
+//				1	Hadouken for executing projectile attack.	Do Hadouken on your right side to execute projectile attack.
+		};
+
+	// only describe player 2 now, " + getOppName() + " vs Garnet
+		actionForwardPositiveCommentary = new String[]{
+				getMyName() + " used",
+				getMyName() + " used",
+				"For an opportunity, " + getMyName() + " used",
+				getMyName() + " continues to use",
+				"Nice time to use",
+				"That's common to use",
+				"That's very nice to use",
+				getMyName() + " knew when to use",
+				getMyName() + " is pressing his opponent by using",
+				"Hit " + getOppName() + " by",
+				"For a chance, " + getMyName() + " used",
+				"How skillfully, " + getMyName() + " used",
+				getMyName() + " released a powerful"
+				
+
+				};
+		
+		actionForwardNegativeCommentary = new String[]{
+		};
+					
+		actionBackwardPositiveCommentary = new String[]{
+				". Excellent for that",
+				". That is a good move!",
+				". Wow, that happened really quick",
+				", really a good one",
+				" that " + getOppName() + " should be very careful",
+				". That'll be a great deal",
+				". Some damage here",
+				" that should tell " + getOppName() + " to quit this game",
+				". It's a good deal of damage",
+				". That's a nice shot",
+				". That's perfect",
+				". " + getOppName() + " gotta be punished!",
+				". " + getOppName() + " will lose for sure!",
+				". Nice!"
+				
+				};
+		
+		actionBackwardNegativeCommentary = new String[]{
+		};
+		
+		// health PDA 
+		
+		healthForwardQuestion = new String[]{
+				"There's a button there",
+				"It's good to try to employ",
+				"It seems possible to"
+			
+		};
+		
+		healthBackwardQuestion = new String[]{
+				", that " + getMyName() + " can rely on being pretty safe to hit",
+				" to get " + getOppName() + " punished",
+				", and knock " + getOppName() + " down"
+
+		};
+		
+		healthPositiveCommentary = new String[]{
+				"Yeah, " + getMyName() + " successfully punished " + getOppName() + "!",
+				"Oh, I can't believe it! Such a pretty move!",
+				"Wow, Nice!",
+				"Hoo, nice timing!",
+				"That's fantastic!",
+				"Oh, that worked!",
+				"Excellent!",
+				"Wonderful!",
+				"Good game",
+				"Nice shot",
+				"Nice move",
+				"Good",
+				"That shot!!",
+				"Those moves are nice",
+				getMyName() + " moves're great!!"
+
+			
+		};
+		
+		healthNegativeCommentary = new String[]{
+				getMyName() + " is at a dangerous point",
+				getMyName() + " likes being in that range",	
+				"Hoo, what a bad timing",
+				getMyName() + " could have been knocked down",
+				"What is " + getMyName() + " doing!!",
+				"That's a bad move",
+				"Oh, no. Not that",
+				"That's not a good idea"
+
+		};
+		
+		cheerUpCommentaryWin = new String[]{
+				"Go Go Go, " + getMyName() + ", Go Go!!!",
+				"We want more! We want more!",	
+				"Go go go",
+				getMyName() + " gonna win",
+				"Attack! Attack!"
+
+		};
+		cheerUpCommentaryLose = new String[]{
+				"Don't give up " + getMyName() + ". Try again",
+				"Don't give up! Come back " + getMyName() + "",	
+				"Fight " + getMyName() + " Fight!!",
+				"You have not been defeated yet, do not give up, just fight it",
+				"C'mon, defense"
+
+		};
+		cheerUpCommentarySame = new String[]{
+				"They are the stars!",
+				"We want more! We want more!",	
+				"Attack! Attack!"
+
+		};
+		
+	}
 	
-	static String healthNegativeCommentary[] = {
-			myName + " is at a dangerous point",
-			myName + " likes being in that range",	
-			"Hoo, what a bad timing",
-			myName + " could have been knocked down",
-			"What is " + myName + " doing!!",
-			"That's a bad move",
-			"Oh, no. Not that",
-			"That's not a good idea"
-
-	};
 	
-	static String cheerUpCommentaryWin[] = {
-			"Go Go Go, " + myName + ", Go Go!!!",
-			"We want more! We want more!",	
-			"Go go go",
-			myName + " gonna win",
-			"Attack! Attack!"
-
-	};
-	static String cheerUpCommentaryLose[] = {
-			"Don't give up " + myName + ". Try again",
-			"Don't give up! Come back " + myName + "",	
-			"Fight " + myName + " Fight!!",
-			"You have not been defeated yet, do not give up, just fight it",
-			"C'mon, defense"
-
-	};
-	static String cheerUpCommentarySame[] = {
-			"They are the stars!",
-			"We want more! We want more!",	
-			"Attack! Attack!"
-
-	};
 	
+	
+	//=============================================================================================
 	
 	public static String  getActionRealName(String  skillCode) {
 		return skillMap.getOrDefault(skillCode, "Default");

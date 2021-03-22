@@ -366,6 +366,9 @@ public class gBEAI implements AIInterface {
 		//--------------
 		this.playerNumber = playerNumber;
 		
+		TTSSkillMap_Common.prepareComment(playerNumber,"Zen","Lud");
+		
+		
 		this.key = new Key();
 		this.frameData = new FrameData();
 		this.commandCenter = new CommandCenter();
@@ -561,14 +564,16 @@ public class gBEAI implements AIInterface {
 		String comment = "";
 		boolean isP1 = playerNumber;
 		TTSSkillMap_Common.isP1 = playerNumber;
+//		System.out.println(TTSSkillMap_Common.isP1 + "ssssss");
 		TTSSkillMap_Common.beai = this;
 		deltaHp = getmyHp - getoppHp;
 		p2_gotDamaged = myMotion.get(this.frameData.getCharacter(isP1).getAction().ordinal()).getAttackHitDamage();
 		p1_gotDamaged = myMotion.get(this.frameData.getCharacter(!isP1).getAction().ordinal()).getAttackHitDamage();
+
+		TTSSkillMap_Common.setCharacter("KKK", "MMM");
+		
 		if(playerNumber) // P1 condition
 		{
-			TTSSkillMap_Common.setCharacter("weqewqweq","zxvxcvxcvxv");
-			
 			if(deltaHp > 60) {
 				comment = TTSSkillMap_Common.generateCheerUpCommentaryWin();
 			}
@@ -580,9 +585,10 @@ public class gBEAI implements AIInterface {
 			}	
 			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
-		else if(!playerNumber)
+		else 
 		{
-			TTSSkillMap_Common.setCharacter("aaaaaaaaaaa","ccccccccccccc");
+//			TTSSkillMap_Common.myName = "Lud";
+//			TTSSkillMap_Common.oppName = "Zen";
 			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
 		//System.out.println("getDamage1 = "+getDamage1);
