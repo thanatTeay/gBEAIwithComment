@@ -358,7 +358,7 @@ public class TTSSkillMap_ZEN {
 
 	}
 	
-	public String generateCheerUpCommentarySame(){
+	public String generateCheerUpCommentaryDraw(){
 		return cheerUpCommentarySame[getRandomNumber(cheerUpCommentarySame.length)];
 
 	}
