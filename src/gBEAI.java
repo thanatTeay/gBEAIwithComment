@@ -544,7 +544,7 @@ public class gBEAI implements AIInterface {
 			canFC = true;
 			isFcFirst = true;
 		}
-	}s
+	}
 	
 	public String genComment() {
 		String comment = "";
