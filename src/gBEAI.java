@@ -93,7 +93,8 @@ public class gBEAI implements AIInterface {
 	//TTS text generator	
 	int gameState; // initialize game state, 0 start, 1 early game, 2 mid game, 3 near end game, 4 end game, 5 specific mode
 	int AIState; // 0 highlight, 1 mcts, 2 harmless
-	String textFromAI, previousText, nameC, textFromCheering;
+	String textFromAI, previousText, nameC;
+	public String textFromCheering;
 	String myCurrentMove;	
 	String opponentPreviousMove;
 	int myCurrentMoveDamage;
@@ -150,7 +151,7 @@ public class gBEAI implements AIInterface {
 		
 	private void exportTextFile()
 		{
-		
+			
 			if(cheering)//checkCheering
 			{
 				try {
@@ -256,15 +257,15 @@ public class gBEAI implements AIInterface {
 		//TODO
 //		if (opponentPreviousMove != ttsSkillMap.getActionRealName(this.frameData.getCharacter(!playerNumber).getAction().name())) {
 //			opponentPreviousMove = myCurrentMove;
-		if(playerNumber)	
-		{
+		//if(playerNumber)	
+		//{
 			myCurrentMove = TTSSkillMap_Common.getActionRealName(this.frameData.getCharacter(playerNumber).getAction().name());
 
-		}
-		else if(!playerNumber) {
+		//}
+		/*else if(!playerNumber) {
 			myCurrentMove = TTSSkillMap_Common.getActionRealName(this.frameData.getCharacter(!playerNumber).getAction().name());
 
-		}
+		}*/
 			
 			//Ishii CoG 2019
 //			if (myCurrentMove == "Ultimate Hadouken"){
@@ -307,7 +308,7 @@ public class gBEAI implements AIInterface {
 	@Override
 	public void close() {
 		// TODO à¸£à¸ˆà¹‚â‚¬à¸�à¸¢à¸Šà¸£à¸…à¹‚â‚¬à¸™à¹‚â‚¬à¸‚à¸£à¸‡à¹‚â‚¬ï¿½à¸¥à¸˜à¸£à¸†à¸«ï¿½à¹�à¸Ÿà¸�à¸£à¸ƒà¹�à¸Ÿà¸�à¹‚â‚¬à¸‚à¸£à¸ƒà¹‚â‚¬ï¿½à¸¥â€™à¸£à¸ƒà¹�à¸Ÿà¸�à¸¥à¸˜à¸£à¸ƒà¸¦â€™à¸¢à¸�à¸£à¸ƒà¹‚â‚¬ï¿½à¸¢à¸�à¸£à¸ƒà¸¦â€™à¸¦â€™à¸£à¸ƒà¸¦â€™à¹‚â‚¬à¸�à¸£à¸ƒà¸¦â€™à¸¢à¸›à¸£à¸ƒà¹‚â‚¬ï¿½à¸¢à¸™à¸£à¸ƒà¹‚â‚¬ï¿½à¸¢à¸Ÿà¸£à¸ƒà¸¦â€™à¹‚â‚¬â€œ
-		textFromAI = ttsSkillMap_Zen.generateEndCommentary();
+		textFromAI = TTSSkillMap_Common.generateEndCommentary();
 		//System.out.println("end");
 		try {
 			BufferedWriter writer =
@@ -430,7 +431,7 @@ public class gBEAI implements AIInterface {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
-		textFromAI = ttsSkillMap_Zen.generateBeginCommentary();
+		textFromAI = TTSSkillMap_Common.generateBeginCommentary();
 		exportTextFile() ;
 		
 		return 0;
@@ -443,10 +444,15 @@ public class gBEAI implements AIInterface {
 		if (canProcessing()) {
 			 getmyHp = myCharacter.getHp();
 			 getoppHp = oppCharacter.getHp();
+			 
 			//System.out.print("Process!!!!!!");
 			getmyCurrentMoveInformation();
 			if(count == 3)
 			{
+				if(playerNumber)
+				{
+					cheering = true;
+				}
 				
 //				if(playerNumber) // P1 condition
 //				{
@@ -482,7 +488,7 @@ public class gBEAI implements AIInterface {
 //				}
 				
 				
-				textFromAI = genComment();
+				genComment();
 				
 				exportTextFile() ;
 				
@@ -560,7 +566,7 @@ public class gBEAI implements AIInterface {
 	}
 	
 
-	public String genComment() {
+	public void genComment() {
 		String comment = "";
 		boolean isP1 = playerNumber;
 		TTSSkillMap_Common.isP1 = playerNumber;
@@ -575,25 +581,25 @@ public class gBEAI implements AIInterface {
 		if(playerNumber) // P1 condition
 		{
 			if(deltaHp > 60) {
-				comment = TTSSkillMap_Common.generateCheerUpCommentaryWin();
+				textFromCheering = TTSSkillMap_Common.generateCheerUpCommentaryWin();
 			}
 			else if(deltaHp < -60)
 			{
-				comment = TTSSkillMap_Common.generateCheerUpCommentaryLose();
+				textFromCheering = TTSSkillMap_Common.generateCheerUpCommentaryLose();
 			}else {
-				comment = TTSSkillMap_Common.generateCheerUpCommentaryDraw();
+				textFromCheering = TTSSkillMap_Common.generateCheerUpCommentaryDraw();
 			}	
-			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
+			textFromAI = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
 		else 
 		{
 //			TTSSkillMap_Common.myName = "Lud";
 //			TTSSkillMap_Common.oppName = "Zen";
-			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
+			textFromAI = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
 		//System.out.println("getDamage1 = "+getDamage1);
 		//System.out.println("getDamage2 = "+getDamage2);
-		return comment;
+		
 		
 	}
 	
