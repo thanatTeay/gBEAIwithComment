@@ -82,9 +82,9 @@ public class  TTSSkillMap_Common {
 	};
 	
 	static String forwardActionInstruction[] = {
-		oppName + " may",
-		oppName + " should",
-		oppName + " can"
+		myName + " may",
+		myName + " should",
+		myName + " can"
 	};
 	
 	static String actionInstruction[] = {
@@ -144,19 +144,19 @@ public class  TTSSkillMap_Common {
 
 // only describe player 2 now, " + oppName + " vs Garnet
 	static String actionForwardPositiveCommentary[] = {
-			oppName + " used",
-			oppName + " used",
-			"For an opportunity, " + oppName + " used",
-			oppName + " continues to use",
+			myName + " used",
+			myName + " used",
+			"For an opportunity, " + myName + " used",
+			myName + " continues to use",
 			"Nice time to use",
 			"That's common to use",
 			"That's very nice to use",
-			oppName + " knew when to use",
-			oppName + " is pressing his opponent by using",
-			"Hit " + myName + " by",
-			"For a chance, " + oppName + " used",
-			"How skillfully, " + oppName + " used",
-			oppName + " released a powerful"
+			myName + " knew when to use",
+			myName + " is pressing his opponent by using",
+			"Hit " + oppName + " by",
+			"For a chance, " + myName + " used",
+			"How skillfully, " + myName + " used",
+			myName + " released a powerful"
 			
 
 			};
@@ -169,15 +169,15 @@ public class  TTSSkillMap_Common {
 			". That is a good move!",
 			". Wow, that happened really quick",
 			", really a good one",
-			"that " + myName + " should be very careful",
+			"that " + oppName + " should be very careful",
 			". That'll be a great deal",
 			". Some damage here",
-			"that should tell " + myName + " to quit this game",
+			"that should tell " + oppName + " to quit this game",
 			". It's a good deal of damage",
 			". That's a nice shot",
 			". That's perfect",
-			". " + myName + " gotta be punished!",
-			". " + myName + " will lose for sure!",
+			". " + oppName + " gotta be punished!",
+			". " + oppName + " will lose for sure!",
 			". Nice!"
 			
 			};
@@ -196,13 +196,13 @@ public class  TTSSkillMap_Common {
 	
 	static String healthBackwardQuestion[] = {
 			", that " + myName + " can rely on being pretty safe to hit",
-			"to get " + myName + " punished",
-			", and knock " + myName + " down"
+			"to get " + oppName + " punished",
+			", and knock " + oppName + " down"
 
 	};
 	
 	static String healthPositiveCommentary[] = {
-			"Yeah, " + oppName + " successfully punished " + myName + "!",
+			"Yeah, " + myName + " successfully punished " + oppName + "!",
 			"Oh, I can't believe it! Such a pretty move!",
 			"Wow, Nice!",
 			"Hoo, nice timing!",
@@ -216,17 +216,17 @@ public class  TTSSkillMap_Common {
 			"Good",
 			"That shot!!",
 			"Those moves are nice",
-			oppName + " moves're great!!"
+			myName + " moves're great!!"
 
 		
 	};
 	
 	static String healthNegativeCommentary[] = {
-			oppName + " is at a dangerous point",
-			oppName + " likes being in that range",	
+			myName + " is at a dangerous point",
+			myName + " likes being in that range",	
 			"Hoo, what a bad timing",
-			oppName + " could have been knocked down",
-			"What is " + oppName + " doing!!",
+			myName + " could have been knocked down",
+			"What is " + myName + " doing!!",
 			"That's a bad move",
 			"Oh, no. Not that",
 			"That's not a good idea"
@@ -234,17 +234,17 @@ public class  TTSSkillMap_Common {
 	};
 	
 	static String cheerUpCommentaryWin[] = {
-			"Go Go Go, " + oppName + ", Go Go!!!",
+			"Go Go Go, " + myName + ", Go Go!!!",
 			"We want more! We want more!",	
 			"Go go go",
-			oppName + " gonna win",
+			myName + " gonna win",
 			"Attack! Attack!"
 
 	};
 	static String cheerUpCommentaryLose[] = {
-			"Don't give up " + oppName + ". Try again",
-			"Don't give up! Come back " + oppName + "",	
-			"Fight " + oppName + " Fight!!",
+			"Don't give up " + myName + ". Try again",
+			"Don't give up! Come back " + myName + "",	
+			"Fight " + myName + " Fight!!",
 			"You have not been defeated yet, do not give up, just fight it",
 			"C'mon, defense"
 
