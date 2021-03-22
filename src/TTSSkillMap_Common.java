@@ -92,8 +92,7 @@ public class  TTSSkillMap_Common {
 	static String[] replaceName(String[] sinput) {
 		String[] soutput = new String[sinput.length];
 		for(int i = 0; i < sinput.length; i++) {
-			soutput[i] = sinput[i].replace("PLAYER1", myName);
-			soutput[i] = sinput[i].replace("PLAYER2", oppName);
+			soutput[i] = sinput[i].replace("PLAYER1", myName).replace("PLAYER2", oppName);
 		}
 		return soutput;
 	}
