@@ -7,9 +7,7 @@ import dataloader.BalFitnessDataLoader;
 public class TTSSkillMap_LUD {
 	private Map<String, String> skillMap;
 	//  extracted Commentary
-	
 	gBEAI beai;
-	
 	String beginCommentary[] = {
 			"Hi everybody, welcome to the match!",
 			"Alright, welcome everybody!",
@@ -44,9 +42,9 @@ public class TTSSkillMap_LUD {
 	};
 	
 	String forwardActionInstruction[] = {
-		"Lud may",
-		"Lud should",
-		"Lud can"
+		"Zen may",
+		"Zen should",
+		"Zen can"
 	};
 	
 	String actionInstruction[] = {
@@ -106,19 +104,19 @@ public class TTSSkillMap_LUD {
 
 // only describe player 2 now, Zen vs Garnet
 	String actionForwardPositiveCommentary[] = {
-			"Lud used",
-			"Lud used",
-			"For an opportunity, Lud used",
-			"Lud continues to use",
+			"Zen used",
+			"Zen used",
+			"For an opportunity, Zen used",
+			"Zen continues to use",
 			"Nice time to use",
 			"That's common to use",
 			"That's very nice to use",
-			"Lud knew when to use",
-			"Lud is pressing his opponent by using",
+			"Zen knew when to use",
+			"Zen is pressing his opponent by using",
 			"Hit Lud by",
-			"For a chance, Lud used",
-			"How skillfully, Lud used",
-			"Lud released a powerful"
+			"For a chance, Zen used",
+			"How skillfully, Zen used",
+			"Zen released a powerful"
 			
 			
 			
@@ -154,15 +152,15 @@ public class TTSSkillMap_LUD {
 			". That is a good move!",
 			". Wow, that happened really quick",
 			", really a good one",
-			"that Zen should be very careful",
+			"that Lud should be very careful",
 			". That'll be a great deal",
 			". Some damage here",
-			"that should tell Zen to quit this game",
+			"that should tell Lud to quit this game",
 			". It's a good deal of damage",
 			". That's a nice shot",
 			". That's perfect",
-			". Zen gotta be punished!",
-			". Zen will lose for sure!",
+			". Lud gotta be punished!",
+			". Lud will lose for sure!",
 			". Nice!"
 			
 			
@@ -208,13 +206,13 @@ public class TTSSkillMap_LUD {
 	
 	String healthBackwardQuestion[] = {
 			", that Lud can rely on being pretty safe to hit",
-			"to get Zen punished",
-			", and knock Zen down"
+			"to get Lud punished",
+			", and knock Lud down"
 
 	};
 	
 	String healthPositiveCommentary[] = {
-			"Yeah, Lud successfully punished Lud!",
+			"Yeah, Zen successfully punished Lud!",
 			"Oh, I can't believe it! Such a pretty move!",
 			"Wow, Nice!",
 			"Hoo, nice timing!",
@@ -228,17 +226,17 @@ public class TTSSkillMap_LUD {
 			"Good",
 			"That shot!!",
 			"Those moves are nice",
-			"Lud moves're great!!"
+			"Zen moves're great!!"
 
 		
 	};
 	
 	String healthNegativeCommentary[] = {
-			"Lud is at a dangerous point",
-			"Lud likes being in that range",	
+			"Zen is at a dangerous point",
+			"Zen likes being in that range",	
 			"Hoo, what a bad timing",
-			"Lud could have been knocked down",
-			"What is Lud doing!!",
+			"Zen could have been knocked down",
+			"What is Zen doing!!",
 			"That's a bad move",
 			"Oh, no. Not that",
 			"That's not a good idea"
@@ -246,17 +244,17 @@ public class TTSSkillMap_LUD {
 	};
 	
 	String cheerUpCommentaryWin[] = {
-			"Go Go Go, Lud, Go Go!!!",
+			"Go Go Go, Zen, Go Go!!!",
 			"We want more! We want more!",	
 			"Go go go",
-			"Lud gonna win",
+			"Zen gonna win",
 			"Attack! Attack!"
 
 	};
 	String cheerUpCommentaryLose[] = {
-			"Don't give up Lud. Try again",
-			"Don't give up! Come back Lud",	
-			"Fight Lud Fight!!",
+			"Don't give up Zen. Try again",
+			"Don't give up! Come back Zen",	
+			"Fight Zen Fight!!",
 			"You have not been defeated yet, do not give up, just fight it",
 			"C'mon, defense"
 
@@ -311,19 +309,19 @@ public class TTSSkillMap_LUD {
 //	public String generateNormalCommentary(String actionRealName, int maxVarId) {
 	public String generateNormalCommentary(String actionRealName) {
 		if (actionRealName == "Default") {
-			if((beai.checkHp < -60 || beai.checkHp > 60) && beai.getDamage2 > 0)
-			{
-				return generateHealthCommentary(beai.myCurrentMove, false);
-				
-			}else if ((beai.checkHp < -60 || beai.checkHp > 60) && beai.getDamage1 > 0){
+			if(Math.abs(beai.deltaHp) > 60 && beai.p2_gotDamaged > 0) {	
 				return generateHealthCommentary(beai.myCurrentMove, true);
 			}
+			else if(Math.abs(beai.deltaHp) > 60 && beai.p1_gotDamaged > 0) {	
+				return generateHealthCommentary(beai.myCurrentMove, false);
+			}
 			else {
+				//diff less than 60 OR noone did damage
 				return chat[getRandomNumber(chat.length)];	
-			}			
-//		
-		} else {
-			if (beai.checkHp < -60 || beai.checkHp > 60)
+			}	
+		} 
+		else {
+			if (Math.abs(beai.deltaHp) > 60)
 			{
 				return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + actionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)] + ".";
 			}
@@ -331,13 +329,40 @@ public class TTSSkillMap_LUD {
 			{
 				return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";			
 			}
-			
-			
-			
 		}
 
 	}
-	
+
+////	public String generateNormalCommentary(String actionRealName, int maxVarId) {
+//	public String generateNormalCommentary(String actionRealName) {
+//		if (actionRealName == "Default") {
+//			if((beai.deltaHp < -60 || beai.deltaHp > 60) && beai.p1_attacked_p2 > 0)
+//			{
+//				return generateHealthCommentary(beai.myCurrentMove, false);
+//				
+//			}else if ((beai.deltaHp < -60 || beai.deltaHp > 60) && beai.p2_attacked_p1 > 0){
+//				return generateHealthCommentary(beai.myCurrentMove, true);
+//			}
+//			else {
+//				return chat[getRandomNumber(chat.length)];	
+//			}			
+////		
+//		} else {
+//			if (beai.deltaHp < -60 || beai.deltaHp > 60)
+//			{
+//				return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + actionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)] + ".";
+//			}
+//			else
+//			{
+//				return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";			
+//			}
+//			
+//			
+//			
+//		}
+//
+//	}
+//	
 	public String generateHealthQuestion(String recommendedActionRealName) {
 		return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + recommendedActionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)];
 	}
@@ -374,7 +399,7 @@ public class TTSSkillMap_LUD {
 
 	}
 	
-	public String generateCheerUpCommentarySame(){
+	public String generateCheerUpCommentaryDraw(){
 		return cheerUpCommentarySame[getRandomNumber(cheerUpCommentarySame.length)];
 
 	}
@@ -395,3 +420,5 @@ public class TTSSkillMap_LUD {
 		return random.nextInt(range);
 	}
 }
+
+

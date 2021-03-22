@@ -110,7 +110,8 @@ public class gBEAI implements AIInterface {
 		//UKI Map
 		private Map<String, String> ukiSkillMap;
 		private Map<String, Integer> realToUkiMap;	
-		int getmyHp,getoppHp, checkHp;
+		int getmyHp,getoppHp;
+		int deltaHp;//P1 Hp - P2 Hp
 		float pdaEvalMin;
 		float pdaEvalMax;
 		float distanceMin;	
@@ -120,7 +121,7 @@ public class gBEAI implements AIInterface {
 		String path1 = "C:\\Users\\maili\\Desktop\\texttospeechAPG\\textfile\\";
 		String path2 = "D:\\FTGexp\\F\\";
 		boolean cheering,writing;
-		int count =0, k=0, getDamage1=0, getDamage2=0, round=1, roundP1won = 0, roundP2won = 0;
+		int count =0, k=0, p2_gotDamaged=0, p1_gotDamaged=0, round=1, roundP1won = 0, roundP2won = 0;
 		String printPlayerWin;
 		Timer timer;
 	    TimerTask task = new TimerTask() {
@@ -379,7 +380,7 @@ public class gBEAI implements AIInterface {
 		count=0;
 		getmyHp = 0;
 		getoppHp = 0;
-		checkHp = 0;
+		deltaHp = 0;
 		roundP1won = 0;
 		roundP2won = 0;
 		start();
@@ -434,39 +435,41 @@ public class gBEAI implements AIInterface {
 			getmyCurrentMoveInformation();
 			if(count == 3)
 			{
-				if(playerNumber) // P1 condition
-				{
-					checkHp = getmyHp - getoppHp;
-					getDamage1 = myMotion.get(this.frameData.getCharacter(playerNumber).getAction().ordinal()).getAttackHitDamage();
-					getDamage2 = myMotion.get(this.frameData.getCharacter(!playerNumber).getAction().ordinal()).getAttackHitDamage();
-					if(checkHp < -60)
-					{
-						textFromCheering = ttsSkillMap_Zen.generateCheerUpCommentaryLose();
-					}else if(checkHp > 60) {
-						textFromCheering = ttsSkillMap_Zen.generateCheerUpCommentaryWin();
-					}else {
-						textFromCheering = ttsSkillMap_Zen.generateCheerUpCommentaryDraw();
-					}
-					
-					cheering = true;		
-					
-					
-					//System.out.println("getDamage1 = "+getDamage1);
-					//System.out.println("getDamage2 = "+getDamage2);
-					textFromAI = ttsSkillMap_Zen.generateNormalCommentary(myCurrentMove);	
-
-					
-				}
-				else if(!playerNumber)
-				{
-					checkHp = getmyHp - getoppHp;
-					getDamage1 = myMotion.get(this.frameData.getCharacter(playerNumber).getAction().ordinal()).getAttackHitDamage();
-					getDamage2 = myMotion.get(this.frameData.getCharacter(!playerNumber).getAction().ordinal()).getAttackHitDamage();
-					
-					textFromAI = ttsSkillMap_Lud.generateNormalCommentary(myCurrentMove);	
-
-				}
+//				if(playerNumber) // P1 condition
+//				{
+//					checkHp = getmyHp - getoppHp;
+//					getDamage1 = myMotion.get(this.frameData.getCharacter(playerNumber).getAction().ordinal()).getAttackHitDamage();
+//					getDamage2 = myMotion.get(this.frameData.getCharacter(!playerNumber).getAction().ordinal()).getAttackHitDamage();
+//					if(checkHp < -60)
+//					{
+//						textFromCheering = ttsSkillMap_Zen.generateCheerUpCommentaryLose();
+//					}else if(checkHp > 60) {
+//						textFromCheering = ttsSkillMap_Zen.generateCheerUpCommentaryWin();
+//					}else {
+//						textFromCheering = ttsSkillMap_Zen.generateCheerUpCommentaryDraw();
+//					}
+//					
+//					cheering = true;		
+//					
+//					
+//					//System.out.println("getDamage1 = "+getDamage1);
+//					//System.out.println("getDamage2 = "+getDamage2);
+//					textFromAI = ttsSkillMap_Zen.generateNormalCommentary(myCurrentMove);	
+//
+//					
+//				}
+//				else if(!playerNumber)
+//				{
+//					checkHp = getmyHp - getoppHp;
+//					getDamage1 = myMotion.get(this.frameData.getCharacter(playerNumber).getAction().ordinal()).getAttackHitDamage();
+//					getDamage2 = myMotion.get(this.frameData.getCharacter(!playerNumber).getAction().ordinal()).getAttackHitDamage();
+//					
+//					textFromAI = ttsSkillMap_Lud.generateNormalCommentary(myCurrentMove);	
+//
+//				}
 				
+				
+				textFromAI = genComment();
 				
 				exportTextFile() ;
 				
@@ -542,6 +545,37 @@ public class gBEAI implements AIInterface {
 			isFcFirst = true;
 		}
 	}
+	
+	public String genComment() {
+		String comment = "";
+		Boolean isP1 = playerNumber;
+		deltaHp = getmyHp - getoppHp;
+		p2_gotDamaged = myMotion.get(this.frameData.getCharacter(isP1).getAction().ordinal()).getAttackHitDamage();
+		p1_gotDamaged = myMotion.get(this.frameData.getCharacter(!isP1).getAction().ordinal()).getAttackHitDamage();
+		if(isP1) // P1 condition
+		{
+			if(deltaHp > 60) {
+				comment = ttsSkillMap_Zen.generateCheerUpCommentaryWin();
+			}
+			else if(deltaHp < -60)
+			{
+				comment = ttsSkillMap_Zen.generateCheerUpCommentaryLose();
+			}else {
+				comment = ttsSkillMap_Zen.generateCheerUpCommentaryDraw();
+			}	
+			comment = ttsSkillMap_Zen.generateNormalCommentary(myCurrentMove);	
+		}
+		else if(!isP1)
+		{
+			
+			comment = ttsSkillMap_Lud.generateNormalCommentary(myCurrentMove);	
+		}
+		//System.out.println("getDamage1 = "+getDamage1);
+		//System.out.println("getDamage2 = "+getDamage2);
+		return comment;
+		
+	}
+	
 
 	@Override
 	public void roundEnd(int x, int y, int frame) {
@@ -565,14 +599,14 @@ public class gBEAI implements AIInterface {
 
 			//System.out.println("target: " + target + " beta " + beta);
 		}*/
-		checkHp = x - y;
-		if(checkHp > 0)
+		deltaHp = x - y;
+		if(deltaHp > 0)
 		{
 			printPlayerWin = "ROUND "+(round+1)+" \n P1's won in Round "+round;
 			round++;
 			roundP1won++;
 		}
-		if(checkHp < 0)
+		if(deltaHp < 0)
 		{
 			printPlayerWin = "ROUND "+(round+1)+" \n P2's won in Round "+round;
 			round++;

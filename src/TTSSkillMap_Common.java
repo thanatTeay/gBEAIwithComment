@@ -1,27 +1,38 @@
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 import dataloader.BalFitnessDataLoader;
 
-public class TTSSkillMap_ZEN {
-	private Map<String, String> skillMap;
+public static class  TTSSkillMap_Common {
+	static Map<String , String > skillMap;
 	//  extracted Commentary
+	
 	gBEAI beai;
-	String beginCommentary[] = {
+	
+	static String  myName = "Zen";
+	static String  oppName = "Lud";
+	
+	static void setCharacter(String myName0, String oppName0) {
+		myName = myName0;
+		oppName = oppName0;
+	}
+	
+	static String beginCommentary[] = {
 			"Hi everybody, welcome to the match!",
 			"Alright, welcome everybody!",
-			"Welcome! Let's see a match between Zen and Lud",
+			"Welcome! Let's see a match between " + oppName + " and " + myName + "",
 			"Welcome to the match",
-			"Welcome to Zen versus Lud"
+			"Welcome to " + oppName + " versus " + myName + ""
 
 	};
 	
-	String beginCommentaryCn[] = {
+	static String beginCommentaryCn[] = {
 			
 		};
 	
-	String endCommentary[] = {
+	static String endCommentary[] = {
 			"It is a nice match",
 			"It is a wonderful match",
 			"See you again in the next match",
@@ -29,7 +40,7 @@ public class TTSSkillMap_ZEN {
 		
 	};
 	
-	String chat[] = {
+	static String chat[] = {
 			"They are trying to attack each other",
 			"It would be a match of the century!",
 			"I have never seen it before",
@@ -41,13 +52,13 @@ public class TTSSkillMap_ZEN {
 
 	};
 	
-	String forwardActionInstruction[] = {
-		"Zen may",
-		"Zen should",
-		"Zen can"
+	static String forwardActionInstruction[] = {
+		oppName + " may",
+		oppName + " should",
+		oppName + " can"
 	};
 	
-	String actionInstruction[] = {
+	static String actionInstruction[] = {
 			"step back your foot for guarding",
 			"move forward to get close to the opponent",
 			"lean backward to move backward",
@@ -102,117 +113,67 @@ public class TTSSkillMap_ZEN {
 //			1	Hadouken for executing projectile attack.	Do Hadouken on your right side to execute projectile attack.
 	};
 
-// only describe player 2 now, Zen vs Garnet
-	String actionForwardPositiveCommentary[] = {
-			"Zen used",
-			"Zen used",
-			"For an opportunity, Zen used",
-			"Zen continues to use",
+// only describe player 2 now, " + oppName + " vs Garnet
+	static String actionForwardPositiveCommentary[] = {
+			oppName + " used",
+			oppName + " used",
+			"For an opportunity, " + oppName + " used",
+			oppName + " continues to use",
 			"Nice time to use",
 			"That's common to use",
 			"That's very nice to use",
-			"Zen knew when to use",
-			"Zen is pressing his opponent by using",
-			"Hit Lud by",
-			"For a chance, Zen used",
-			"How skillfully, Zen used",
-			"Zen released a powerful"
+			oppName + " knew when to use",
+			oppName + " is pressing his opponent by using",
+			"Hit " + myName + " by",
+			"For a chance, " + oppName + " used",
+			"How skillfully, " + oppName + " used",
+			oppName + " released a powerful"
 			
-			
-			
-			/*"He",
-			"I have never seen that before",
-			"So threatening he",
-			"Zen",
-			"For an opportunity he",
-			"he continues to",
-			//"Oh My God and just like that showing you exactly what can happen with",
-			"Nice thing for",
-			"That's common that",
-			"That's very crucial",
-			"What a fast",
-			"He knew is that to",
-			"He could turn on his head if that",
-			"He just knows the",
-			"It's always not enough to",
-			"He used",
-			"You would think even given",
-			"He is pressing it out pump",
-			"He's so powerful releasing",
-			"Hit him by",
-			"Again that "*/
 
 			};
 	
-	String actionForwardNegativeCommentary[] = {
+	static String actionForwardNegativeCommentary[] = {
 	};
 				
-	String actionBackwardPositiveCommentary[] = {
+	static String actionBackwardPositiveCommentary[] = {
 			". Excellent for that",
 			". That is a good move!",
 			". Wow, that happened really quick",
 			", really a good one",
-			"that Lud should be very careful",
+			"that " + myName + " should be very careful",
 			". That'll be a great deal",
 			". Some damage here",
-			"that should tell Lud to quit this game",
+			"that should tell " + myName + " to quit this game",
 			". It's a good deal of damage",
 			". That's a nice shot",
 			". That's perfect",
-			". Lud gotta be punished!",
-			". Lud will lose for sure!",
+			". " + myName + " gotta be punished!",
+			". " + myName + " will lose for sure!",
 			". Nice!"
 			
-			
-			
-			/*"excellent for that",
-			", that is a good move",
-			", really wants to get in there",
-			"for real baby",
-			"actually, gave him always here",
-			"be a trigger right now already for nice hit",
-			//", what a fast under funky invasiveness he read the board on the box",
-			", wow that happens really quick",
-			"punish that point",
-			"really a good one",
-			//", that's really important to go",
-			"that Zen should be very careful",
-			"all of us should applause for him",
-			//", answers back immediately reflect around",
-			", he is gotta be punished",
-			"always not going to be a son",
-			"it could go to different",
-			"Oh that'll be a great deal",
-			", some damage here",
-			"for a bit of comeback",
-			"that to tell him should quit this game",
-			"always has to respect it",
-			"good flow",
-			"counted"*/
-
 			};
 	
-	String actionBackwardNegativeCommentary[] = {
+	static String actionBackwardNegativeCommentary[] = {
 	};
 	
 	// health PDA 
 	
-	String healthForwardQuestion[] = {
+	static String healthForwardQuestion[] = {
 			"There's a button there,",
 			"It's good to try to employ",
 			"It seems possible to"
 		
 	};
 	
-	String healthBackwardQuestion[] = {
-			", that Lud can rely on being pretty safe to hit",
-			"to get Lud punished",
-			", and knock Lud down"
+	static String healthBackwardQuestion[] = {
+			", that " + myName + " can rely on being pretty safe to hit",
+			"to get " + myName + " punished",
+			", and knock " + myName + " down"
 
 	};
 	
-	String healthPositiveCommentary[] = {
-			"Yeah, Zen successfully punished Lud!",
+	static String healthPositiveCommentary[] = {
+			"Yeah, " + oppName + " successfully punished " + myName + "!",
 			"Oh, I can't believe it! Such a pretty move!",
 			"Wow, Nice!",
 			"Hoo, nice timing!",
@@ -226,48 +187,51 @@ public class TTSSkillMap_ZEN {
 			"Good",
 			"That shot!!",
 			"Those moves are nice",
-			"Zen moves're great!!"
+			oppName + " moves're great!!"
 
 		
 	};
 	
-	String healthNegativeCommentary[] = {
-			"Zen is at a dangerous point",
-			"Zen likes being in that range",	
+	static String healthNegativeCommentary[] = {
+			oppName + " is at a dangerous point",
+			oppName + " likes being in that range",	
 			"Hoo, what a bad timing",
-			"Zen could have been knocked down",
-			"What is Zen doing!!",
+			oppName + " could have been knocked down",
+			"What is " + oppName + " doing!!",
 			"That's a bad move",
 			"Oh, no. Not that",
 			"That's not a good idea"
 
 	};
 	
-	String cheerUpCommentaryWin[] = {
-			"Go Go Go, Zen, Go Go!!!",
+	static String cheerUpCommentaryWin[] = {
+			"Go Go Go, " + oppName + ", Go Go!!!",
 			"We want more! We want more!",	
 			"Go go go",
-			"Zen gonna win",
+			oppName + " gonna win",
 			"Attack! Attack!"
 
 	};
-	String cheerUpCommentaryLose[] = {
-			"Don't give up Zen. Try again",
-			"Don't give up! Come back Zen",	
-			"Fight Zen Fight!!",
+	static String cheerUpCommentaryLose[] = {
+			"Don't give up " + oppName + ". Try again",
+			"Don't give up! Come back " + oppName + "",	
+			"Fight " + oppName + " Fight!!",
 			"You have not been defeated yet, do not give up, just fight it",
 			"C'mon, defense"
 
 	};
-	String cheerUpCommentarySame[] = {
+	static String cheerUpCommentarySame[] = {
 			"They are the stars!",
 			"We want more! We want more!",	
 			"Attack! Attack!"
 
 	};
 	
-	public TTSSkillMap_ZEN() {
-		skillMap = new HashMap<String, String>();
+	
+	
+	
+	public TTSSkillMap_Common() {
+		skillMap = new HashMap<String , String >();
 		
 		skillMap.put("STAND_D_DB_BA", "Flying crop");
 //		skillMap.put("BACK_STEP", "Back step");
@@ -296,7 +260,7 @@ public class TTSSkillMap_ZEN {
 	/**
 	 * transfer action code into real action name in natural language
 	 */
-	public String getActionRealName(String skillCode) {
+	public static String  getActionRealName(String  skillCode) {
 		return skillMap.getOrDefault(skillCode, "Default");
 	}
 		
@@ -306,14 +270,13 @@ public class TTSSkillMap_ZEN {
 	 * @return complete Commentary
 	 */
 	
-//	public String generateNormalCommentary(String actionRealName, int maxVarId) {
-	public String generateNormalCommentary(String actionRealName) {
+	public static String  generateNormalCommentary(String  actionRealName, gBEAI beai, boolean isP1) {
 		if (actionRealName == "Default") {
-			if(Math.abs(beai.deltaHp) > 60 && beai.p2_gotDamaged > 0) {	
-				return generateHealthCommentary(beai.myCurrentMove, true);
+			if(Math.abs(beai.deltaHp) > 60 && beai.p1_gotDamaged > 0) {	
+				return generateHealthCommentary(beai.myCurrentMove, isP1);
 			}
-			else if(Math.abs(beai.deltaHp) > 60 && beai.p1_gotDamaged > 0) {	
-				return generateHealthCommentary(beai.myCurrentMove, false);
+			else if(Math.abs(beai.deltaHp) > 60 && beai.p2_gotDamaged > 0) {	
+				return generateHealthCommentary(beai.myCurrentMove, isP1);
 			}
 			else {
 				//diff less than 60 OR noone did damage
@@ -332,46 +295,16 @@ public class TTSSkillMap_ZEN {
 		}
 
 	}
-
-////	public String generateNormalCommentary(String actionRealName, int maxVarId) {
-//	public String generateNormalCommentary(String actionRealName) {
-//		if (actionRealName == "Default") {
-//			if((beai.deltaHp < -60 || beai.deltaHp > 60) && beai.p1_attacked_p2 > 0)
-//			{
-//				return generateHealthCommentary(beai.myCurrentMove, false);
-//				
-//			}else if ((beai.deltaHp < -60 || beai.deltaHp > 60) && beai.p2_attacked_p1 > 0){
-//				return generateHealthCommentary(beai.myCurrentMove, true);
-//			}
-//			else {
-//				return chat[getRandomNumber(chat.length)];	
-//			}			
-////		
-//		} else {
-//			if (beai.deltaHp < -60 || beai.deltaHp > 60)
-//			{
-//				return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + actionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)] + ".";
-//			}
-//			else
-//			{
-//				return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";			
-//			}
-//			
-//			
-//			
-//		}
-//
-//	}
-//	
-	public String generateHealthQuestion(String recommendedActionRealName) {
+	
+	public static String  generateHealthQuestion(String  recommendedActionRealName) {
 		return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + recommendedActionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)];
 	}
 	//TODO
-	public String generateActionInstruction(String recommendedActionRealName) {
+	public static String  generateActionInstruction(String  recommendedActionRealName) {
 		return forwardActionInstruction[getRandomNumber(forwardActionInstruction.length)] + " " +actionInstruction[getRandomNumber(actionInstruction.length)];
 	}
 	
-	public String generateHealthCommentary(String actionRealName, boolean judgement) {
+	public static String  generateHealthCommentary(String  actionRealName, boolean judgement) {
 		if (actionRealName == "Default") {
 			if (judgement) {	
 				return healthPositiveCommentary[getRandomNumber(healthPositiveCommentary.length)];			
@@ -384,27 +317,27 @@ public class TTSSkillMap_ZEN {
 		
 	}
 	
-	public String generateBeginCommentary(){
+	public static String  generateBeginCommentary(){
 		return beginCommentary[getRandomNumber(beginCommentary.length)];
 //		return beginCommentaryCn[getRandomNumber(beginCommentary.length)];
 	}
 	
-	public String generateCheerUpCommentaryWin(){
+	public static String  generateCheerUpCommentaryWin(){
 		return cheerUpCommentaryWin[getRandomNumber(cheerUpCommentaryWin.length)];
 
 	}
 	
-	public String generateCheerUpCommentaryLose(){
+	public static String  generateCheerUpCommentaryLose(){
 		return cheerUpCommentaryLose[getRandomNumber(cheerUpCommentaryLose.length)];
 
 	}
 	
-	public String generateCheerUpCommentaryDraw(){
+	public static String  generateCheerUpCommentarySame(){
 		return cheerUpCommentarySame[getRandomNumber(cheerUpCommentarySame.length)];
 
 	}
 	
-	public String generateEndCommentary(){
+	public static String  generateEndCommentary(){
 		return endCommentary[getRandomNumber(endCommentary.length)];
 	}
 	
@@ -415,7 +348,7 @@ public class TTSSkillMap_ZEN {
 	 * @param range
 	 * @return random number within range
 	 */
-	public int getRandomNumber(int range) {
+	public static int getRandomNumber(int range) {
 		Random random = new Random();
 		return random.nextInt(range);
 	}
