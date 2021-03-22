@@ -8,6 +8,8 @@ public class TTSSkillMap_LUD {
 	private Map<String, String> skillMap;
 	//  extracted Commentary
 	
+	gBEAI beai;
+	
 	String beginCommentary[] = {
 			"Hi everybody, welcome to the match!",
 			"Alright, welcome everybody!",
@@ -309,15 +311,29 @@ public class TTSSkillMap_LUD {
 //	public String generateNormalCommentary(String actionRealName, int maxVarId) {
 	public String generateNormalCommentary(String actionRealName) {
 		if (actionRealName == "Default") {
-//			if (getRandomNumber(100) < 30) {
-				return chat[getRandomNumber(chat.length)];				
-//			} else {
-//				//TODO add improve variability
-//				return forwardActionInstruction[getRandomNumber(forwardActionInstruction.length)] + " " + actionInstruction[maxVarId];
-//			}
-
+			if((beai.checkHp < -60 || beai.checkHp > 60) && beai.getDamage2 > 0)
+			{
+				return generateHealthCommentary(beai.myCurrentMove, false);
+				
+			}else if ((beai.checkHp < -60 || beai.checkHp > 60) && beai.getDamage1 > 0){
+				return generateHealthCommentary(beai.myCurrentMove, true);
+			}
+			else {
+				return chat[getRandomNumber(chat.length)];	
+			}			
+//		
 		} else {
-			return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";			
+			if (beai.checkHp < -60 || beai.checkHp > 60)
+			{
+				return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + actionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)] + ".";
+			}
+			else
+			{
+				return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";			
+			}
+			
+			
+			
 		}
 
 	}

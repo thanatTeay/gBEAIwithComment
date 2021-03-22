@@ -317,6 +317,24 @@ public class gBEAI implements AIInterface {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
+		try {
+			BufferedWriter writer =
+	                  new BufferedWriter(new FileWriter(path2+"p1HP.txt"));
+			
+			 writer.write(String.valueOf("0"));
+			 writer.close();
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+		try {
+			BufferedWriter writer =
+	                  new BufferedWriter(new FileWriter(path2+"p2HP.txt"));
+			
+			 writer.write(String.valueOf("0"));
+			 writer.close();
+		}catch (IOException e){
+			e.printStackTrace();
+		}
 		System.out.println(textFromAI);
 		stop();
 		//count = 200;
