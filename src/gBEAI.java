@@ -546,7 +546,7 @@ public class gBEAI implements AIInterface {
 		}
 	}
 	
-	ERROR HERE
+
 	public String genComment() {
 		String comment = "";
 		boolean isP1 = playerNumber;
@@ -570,7 +570,7 @@ public class gBEAI implements AIInterface {
 			}	
 			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
-		else if(!isP1)
+		else 
 		{
 			TTSSkillMap_Common.setCharacter("Lud","Zen");
 			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
