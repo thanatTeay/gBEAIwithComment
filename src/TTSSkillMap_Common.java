@@ -92,8 +92,8 @@ public class  TTSSkillMap_Common {
 	static String[] replaceName(String[] sinput) {
 		String[] soutput = new String[sinput.length];
 		for(int i = 0; i < sinput.length; i++) {
-			soutput[i] = sinput[i] .replace("PLAYER1", myName);
-			soutput[i] = sinput[i] .replace("PLAYER2", oppName);
+			soutput[i] = sinput[i].replace("PLAYER1", myName);
+			soutput[i] = sinput[i].replace("PLAYER2", oppName);
 		}
 		return soutput;
 	}
@@ -184,62 +184,58 @@ public class  TTSSkillMap_Common {
 				"We want more! We want more!",
 				"Attack! Attack!",
 		});
-		
-		
-		
-		
+			actionForwardPositiveCommentary = replaceName(new String[] {
+					"PLAYER1 used",
+					"For an opportunity, PLAYER1 used",
+					"PLAYER1 continues to use",
+					"Nice time to use",
+					"That's common to use",
+					"That's very nice to use",
+					"PLAYER1 knew when to use",
+					"PLAYER1 is pressing his opponent by using",
+					"Hit PLAYER2 by ",
+					"For a chance, PLAYER1 used",
+					"How skillfully, PLAYER1 used",
+					"PLAYER1 released a powerful ",
+			});
+			
+			actionBackwardPositiveCommentary = replaceName(new String[] {
+					". Excellent for that",
+					". That is a good move!",
+					". Wow, that happened really quick",
+					", really a good one",
+					" that PLAYER2 should be very careful",
+					". That'll be a great deal",
+					". Some damage here",
+					" that should tell PLAYER2 to quit this game",
+					". It's a good deal of damage",
+					". That's a nice shot",
+					". That's perfect",
+					". PLAYER2 gotta be punished!",
+					". PLAYER2 will lose for sure!",
+					". Nice!",
+			});
 
-		
-		
+			
+			
+			
+			
+//			
+//			actionForwardNegativeCommentary = replaceName(new String[] {
+//			});
+//						
+//			actionBackwardNegativeCommentary = replaceName(new String[] {
+//			});
+//		
+//
+//				
 //		
 //		forwardActionInstruction = new String[]{
 //			getMyName() + " may",
 //			getMyName() + " should",
 //			getMyName() + " can"
 //		};
-//
-//	// only describe player 2 now, " + getOppName() + " vs Garnet
-//		actionForwardPositiveCommentary = new String[]{
-//				getMyName() + " used",
-//				getMyName() + " used",
-//				"For an opportunity, " + getMyName() + " used",
-//				getMyName() + " continues to use",
-//				"Nice time to use",
-//				"That's common to use",
-//				"That's very nice to use",
-//				getMyName() + " knew when to use",
-//				getMyName() + " is pressing his opponent by using",
-//				"Hit " + getOppName() + " by",
-//				"For a chance, " + getMyName() + " used",
-//				"How skillfully, " + getMyName() + " used",
-//				getMyName() + " released a powerful"
-//				
-//
-//				};
-//		
-//		actionForwardNegativeCommentary = new String[]{
-//		};
-//					
-//		actionBackwardPositiveCommentary = new String[]{
-//				". Excellent for that",
-//				". That is a good move!",
-//				". Wow, that happened really quick",
-//				", really a good one",
-//				" that " + getOppName() + " should be very careful",
-//				". That'll be a great deal",
-//				". Some damage here",
-//				" that should tell " + getOppName() + " to quit this game",
-//				". It's a good deal of damage",
-//				". That's a nice shot",
-//				". That's perfect",
-//				". " + getOppName() + " gotta be punished!",
-//				". " + getOppName() + " will lose for sure!",
-//				". Nice!"
-//				
-//				};
-//		
-//		actionBackwardNegativeCommentary = new String[]{
-//		};
+
 		
 //		actionInstruction = new String[]{
 //				"step back your foot for guarding",
