@@ -38,11 +38,11 @@ public class  TTSSkillMap_Common {
 	
 	static public boolean isP1 = true;
 	static public String  myName = "Player1";
-	static public String  OppName = "Player2";
+	static public String  oppName = "Player2";
 
 	static void setCharacter(String myName0, String OppName0) {
 		myName = myName0;
-		OppName = OppName0;
+		oppName = OppName0;
 	}
 	
 	
@@ -51,7 +51,7 @@ public class  TTSSkillMap_Common {
 	}
 	
 	static String getOppName(){
-		return OppName;
+		return oppName;
 	}
 	
 	static String beginCommentary[] = {
@@ -89,6 +89,14 @@ public class  TTSSkillMap_Common {
 	static String cheerUpCommentarySame[] = {};
 	
 	
+	static String[] replaceName(String[] sinput) {
+		String[] soutput = new String[sinput.length];
+		for(int i = 0; i < sinput.length; i++) {
+			soutput[i] = sinput[i] .replace("PLAYER1", myName);
+			soutput[i] = sinput[i] .replace("PLAYER2", oppName);
+		}
+		return soutput;
+	}
 	
 	static void prepareComment(Boolean isP10, String myName0, String OppName0) {
 		isP1 = isP10;
@@ -96,22 +104,18 @@ public class  TTSSkillMap_Common {
 		else { setCharacter("Lud","Zen"); }
 		
 
-		beginCommentary = new String[] {
+		beginCommentary = replaceName(new String[] {
 				"Hi everybody, welcome to the match!",
 				"Alright, welcome everybody!",
-				"Welcome! Let's see a match between " + getMyName() + " and " + getOppName() + "",
+				"Welcome! Let's see a match between PLAYER1 and PLAYER2",
 				"Welcome to the match",
-				"Welcome to " + getMyName() + " versus " + getOppName() + ""
-
-		};
-		
-		
+				"Welcome to PLAYER1 versus PLAYER2",
+		});
 		endCommentary = new String[]{
 				"It is a nice match",
 				"It is a wonderful match",
 				"See you again in the next match",
-				"Thank you for watching"
-			
+				"Thank you for watching",
 		};
 		
 		chat = new String[]{
