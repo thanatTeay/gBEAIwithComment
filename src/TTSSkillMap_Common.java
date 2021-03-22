@@ -6,13 +6,42 @@ import java.util.Random;
 import dataloader.BalFitnessDataLoader;
 
 public class  TTSSkillMap_Common {
-	static Map<String , String > skillMap;
+	static Map<String , String > skillMap = new HashMap<String , String >(){{
+		
+		put("STAND_D_DB_BA", "Flying crop");
+//		put("BACK_STEP", "Back step");
+//		put("FORWARD_WALK", "Step forward");
+		put("DASH", "Lean forward");
+		put("STAND_GUARD", "Guard");
+		put("CROUCH_GUARD", "Guard");
+		put("THROW_A", "Throw");
+		put("THROW_B", "Great Throw");
+		put("STAND_A", "Punch");
+		put("STAND_B", "Kick");
+		put("CROUCH_A", "Low Punch");
+		put("CROUCH_B", "Low Kick");
+		put("STAND_FA", "Heavy Punch");
+		put("STAND_FB", "Heavy Kick");
+		put("CROUCH_FA", "Low Heavy Punch");
+		put("CROUCH_FB", "Low Heavy Kick");
+		put("STAND_D_DF_FA", "Hadouken");
+		put("STAND_D_DF_FB", "Super Hadouken");	
+		put("STAND_F_D_DFA", "Uppercut");
+		put("STAND_F_D_DFB", "Super Uppercut");
+		put("STAND_D_DB_BB", "Slide Kick");
+		put("STAND_D_DF_FC", "Ultimate Hadouken");	
+	}};
+	
 	//  extracted Commentary
 	
-	gBEAI beai;
+	static public gBEAI beai;
 	
+	static public boolean isP1 = true;
 	static String  myName = "Zen";
 	static String  oppName = "Lud";
+	
+	
+	
 	
 	static void setCharacter(String myName0, String oppName0) {
 		myName = myName0;
@@ -22,9 +51,9 @@ public class  TTSSkillMap_Common {
 	static String beginCommentary[] = {
 			"Hi everybody, welcome to the match!",
 			"Alright, welcome everybody!",
-			"Welcome! Let's see a match between " + oppName + " and " + myName + "",
+			"Welcome! Let's see a match between " + myName + " and " + oppName + "",
 			"Welcome to the match",
-			"Welcome to " + oppName + " versus " + myName + ""
+			"Welcome to " + myName + " versus " + oppName + ""
 
 	};
 	
@@ -228,49 +257,11 @@ public class  TTSSkillMap_Common {
 	};
 	
 	
-	
-	
-	public TTSSkillMap_Common() {
-		skillMap = new HashMap<String , String >();
-		
-		skillMap.put("STAND_D_DB_BA", "Flying crop");
-//		skillMap.put("BACK_STEP", "Back step");
-//		skillMap.put("FORWARD_WALK", "Step forward");
-//		skillMap.put("DASH", "Lean forward");
-		skillMap.put("STAND_GUARD", "Guard");
-		skillMap.put("CROUCH_GUARD", "Guard");
-		skillMap.put("THROW_A", "Throw");
-		skillMap.put("THROW_B", "Great Throw");
-		skillMap.put("STAND_A", "Punch");
-		skillMap.put("STAND_B", "Kick");
-		skillMap.put("CROUCH_A", "Low Punch");
-		skillMap.put("CROUCH_B", "Low Kick");
-		skillMap.put("STAND_FA", "Heavy Punch");
-		skillMap.put("STAND_FB", "Heavy Kick");
-		skillMap.put("CROUCH_FA", "Low Heavy Punch");
-		skillMap.put("CROUCH_FB", "Low Heavy Kick");
-		skillMap.put("STAND_D_DF_FA", "Hadouken");
-		skillMap.put("STAND_D_DF_FB", "Super Hadouken");	
-		skillMap.put("STAND_F_D_DFA", "Uppercut");
-		skillMap.put("STAND_F_D_DFB", "Super Uppercut");
-		skillMap.put("STAND_D_DB_BB", "Slide Kick");
-		skillMap.put("STAND_D_DF_FC", "Ultimate Hadouken");	
-	}
-	
-	/**
-	 * transfer action code into real action name in natural language
-	 */
 	public static String  getActionRealName(String  skillCode) {
 		return skillMap.getOrDefault(skillCode, "Default");
 	}
 		
-	/**
-	 * natural language processing using real action name, just prototype for it
-	 * TODO
-	 * @return complete Commentary
-	 */
-	
-	public static String  generateNormalCommentary(String  actionRealName, gBEAI beai, boolean isP1) {
+	public static String  generateNormalCommentary(String  actionRealName) {
 		if (actionRealName == "Default") {
 			if(Math.abs(beai.deltaHp) > 60 && beai.p1_gotDamaged > 0) {	
 				return generateHealthCommentary(beai.myCurrentMove, isP1);
@@ -331,8 +322,8 @@ public class  TTSSkillMap_Common {
 		return cheerUpCommentaryLose[getRandomNumber(cheerUpCommentaryLose.length)];
 
 	}
-	
-	public static String  generateCheerUpCommentarySame(){
+
+	public static String generateCheerUpCommentaryDraw(){
 		return cheerUpCommentarySame[getRandomNumber(cheerUpCommentarySame.length)];
 
 	}

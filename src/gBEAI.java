@@ -548,27 +548,31 @@ public class gBEAI implements AIInterface {
 	
 	public String genComment() {
 		String comment = "";
-		Boolean isP1 = playerNumber;
+		boolean isP1 = playerNumber;
+		TTSSkillMap_Common.isP1 = playerNumber;
+		TTSSkillMap_Common.beai = this;
 		deltaHp = getmyHp - getoppHp;
 		p2_gotDamaged = myMotion.get(this.frameData.getCharacter(isP1).getAction().ordinal()).getAttackHitDamage();
 		p1_gotDamaged = myMotion.get(this.frameData.getCharacter(!isP1).getAction().ordinal()).getAttackHitDamage();
 		if(isP1) // P1 condition
 		{
+			TTSSkillMap_Common.setCharacter("Zen","Lud");
+			
 			if(deltaHp > 60) {
-				comment = ttsSkillMap_Zen.generateCheerUpCommentaryWin();
+				comment = TTSSkillMap_Common.generateCheerUpCommentaryWin();
 			}
 			else if(deltaHp < -60)
 			{
-				comment = ttsSkillMap_Zen.generateCheerUpCommentaryLose();
+				comment = TTSSkillMap_Common.generateCheerUpCommentaryLose();
 			}else {
-				comment = ttsSkillMap_Zen.generateCheerUpCommentaryDraw();
+				comment = TTSSkillMap_Common.generateCheerUpCommentaryDraw();
 			}	
-			comment = ttsSkillMap_Zen.generateNormalCommentary(myCurrentMove);	
+			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
 		else if(!isP1)
 		{
-			
-			comment = ttsSkillMap_Lud.generateNormalCommentary(myCurrentMove);	
+			TTSSkillMap_Common.setCharacter("Lud","Zen");
+			comment = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
 		//System.out.println("getDamage1 = "+getDamage1);
 		//System.out.println("getDamage2 = "+getDamage2);
@@ -576,6 +580,38 @@ public class gBEAI implements AIInterface {
 		
 	}
 	
+	
+	
+//
+//	public String genComment() {
+//		String comment = "";
+//		Boolean isP1 = playerNumber;
+//		deltaHp = getmyHp - getoppHp;
+//		p2_gotDamaged = myMotion.get(this.frameData.getCharacter(isP1).getAction().ordinal()).getAttackHitDamage();
+//		p1_gotDamaged = myMotion.get(this.frameData.getCharacter(!isP1).getAction().ordinal()).getAttackHitDamage();
+//		if(isP1) // P1 condition
+//		{
+//			if(deltaHp > 60) {
+//				comment = ttsSkillMap_Zen.generateCheerUpCommentaryWin();
+//			}
+//			else if(deltaHp < -60)
+//			{
+//				comment = ttsSkillMap_Zen.generateCheerUpCommentaryLose();
+//			}else {
+//				comment = ttsSkillMap_Zen.generateCheerUpCommentaryDraw();
+//			}	
+//			comment = ttsSkillMap_Zen.generateNormalCommentary(myCurrentMove);	
+//		}
+//		else if(!isP1)
+//		{
+//			
+//			comment = ttsSkillMap_Lud.generateNormalCommentary(myCurrentMove);	
+//		}
+//		//System.out.println("getDamage1 = "+getDamage1);
+//		//System.out.println("getDamage2 = "+getDamage2);
+//		return comment;
+//		
+//	}
 
 	@Override
 	public void roundEnd(int x, int y, int frame) {
