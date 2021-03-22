@@ -546,7 +546,7 @@ public class gBEAI implements AIInterface {
 		}
 	}
 	
-	ERROR HERE
+
 	public String genComment() {
 		String comment = "";
 		boolean isP1 = playerNumber;
