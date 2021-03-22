@@ -5,7 +5,7 @@ import java.util.Random;
 
 import dataloader.BalFitnessDataLoader;
 
-public static class  TTSSkillMap_Common {
+public class  TTSSkillMap_Common {
 	static Map<String , String > skillMap;
 	//  extracted Commentary
 	
