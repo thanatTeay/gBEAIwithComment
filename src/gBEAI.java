@@ -97,6 +97,8 @@ public class gBEAI implements AIInterface {
 	public String textFromCheering;
 	String myCurrentMove;	
 	String opponentPreviousMove;
+	String P1, theWinner;
+	String P2;
 	int myCurrentMoveDamage;
 	int myCurrentMoveDamageMax;
 	private LinkedList<String> tempOpponentActionList;	
@@ -309,12 +311,32 @@ public class gBEAI implements AIInterface {
 	public void close() {
 		// TODO à¸£à¸ˆà¹‚â‚¬à¸�à¸¢à¸Šà¸£à¸…à¹‚â‚¬à¸™à¹‚â‚¬à¸‚à¸£à¸‡à¹‚â‚¬ï¿½à¸¥à¸˜à¸£à¸†à¸«ï¿½à¹�à¸Ÿà¸�à¸£à¸ƒà¹�à¸Ÿà¸�à¹‚â‚¬à¸‚à¸£à¸ƒà¹‚â‚¬ï¿½à¸¥â€™à¸£à¸ƒà¹�à¸Ÿà¸�à¸¥à¸˜à¸£à¸ƒà¸¦â€™à¸¢à¸�à¸£à¸ƒà¹‚â‚¬ï¿½à¸¢à¸�à¸£à¸ƒà¸¦â€™à¸¦â€™à¸£à¸ƒà¸¦â€™à¹‚â‚¬à¸�à¸£à¸ƒà¸¦â€™à¸¢à¸›à¸£à¸ƒà¹‚â‚¬ï¿½à¸¢à¸™à¸£à¸ƒà¹‚â‚¬ï¿½à¸¢à¸Ÿà¸£à¸ƒà¸¦â€™à¹‚â‚¬â€œ
 		textFromAI = TTSSkillMap_Common.generateEndCommentary();
+		
+		if(roundP1won > roundP2won)
+		{
+			 P1 = "WIN";
+			 P2 = "LOSE";
+			 theWinner = "The winner of this game is Zen";
+		}
+		else if(roundP1won == roundP2won)
+		{
+			 P1 = "DRAW";
+			 P2 = "DRAW";
+			 theWinner = "Draw";
+
+		}
+		else if(roundP1won < roundP2won)
+		{
+			 P1 = "LOSE";
+			 P2 = "WIN";
+			 theWinner = "The winner of this game is Lud";
+		}
 		//System.out.println("end");
 		try {
 			BufferedWriter writer =
 	                  new BufferedWriter(new FileWriter(path2+"TotalP1Win.txt"));
 			
-			 writer.write(String.valueOf(roundP1won));
+			 writer.write(String.valueOf(P1+"\n"+roundP1won));
 			 writer.close();
 		}catch (IOException e){
 			e.printStackTrace();
@@ -323,7 +345,7 @@ public class gBEAI implements AIInterface {
 			BufferedWriter writer =
 	                  new BufferedWriter(new FileWriter(path2+"TotalP2Win.txt"));
 			
-			 writer.write(String.valueOf(roundP2won));
+			 writer.write(String.valueOf(P2+"\n"+roundP2won));
 			 writer.close();
 		}catch (IOException e){
 			e.printStackTrace();
@@ -346,6 +368,17 @@ public class gBEAI implements AIInterface {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
+		try {
+			BufferedWriter writer =
+	                  new BufferedWriter(new FileWriter(path2+"theWinner.txt"));
+			
+			 writer.write(theWinner);
+			 writer.close();
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+		
+		
 		System.out.println(textFromAI);
 		stop();
 		//count = 200;
@@ -428,6 +461,15 @@ public class gBEAI implements AIInterface {
 			 writer.write(" ");
 			 writer.close(); 
 	         
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+		try {
+			BufferedWriter writer =
+	                  new BufferedWriter(new FileWriter(path2+"theWinner.txt"));
+			
+			 writer.write(" ");
+			 writer.close();
 		}catch (IOException e){
 			e.printStackTrace();
 		}
@@ -593,8 +635,6 @@ public class gBEAI implements AIInterface {
 		}
 		else 
 		{
-//			TTSSkillMap_Common.myName = "Lud";
-//			TTSSkillMap_Common.oppName = "Zen";
 			textFromAI = TTSSkillMap_Common.generateNormalCommentary(myCurrentMove);	
 		}
 		//System.out.println("getDamage1 = "+getDamage1);

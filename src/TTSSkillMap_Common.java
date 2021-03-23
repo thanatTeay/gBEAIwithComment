@@ -63,7 +63,7 @@ public class  TTSSkillMap_Common {
 	static String endCommentary[] = {
 	};
 	
-	static String chat[] = {
+	static String generalCommentary[] = {
 	};
 	
 	static String forwardActionInstruction[] = {
@@ -118,7 +118,7 @@ public class  TTSSkillMap_Common {
 				"Thank you for watching",
 		});
 		
-		chat = replaceName(new String[] {
+		generalCommentary = replaceName(new String[] {
 				"They are trying to attack each other",
 				"It would be a match of the century!",
 				"I have never seen it before",
@@ -304,29 +304,39 @@ public class  TTSSkillMap_Common {
 		
 	public static String  generateNormalCommentary(String  actionRealName) {
 		if (actionRealName == "Default") {
-			if(Math.abs(beai.deltaHp) > 60 && beai.p1_gotDamaged > 0) {	
-				return generateHealthCommentary(beai.myCurrentMove, isP1);
+			if(Math.abs(beai.deltaHp) > 60 && beai.p2_gotDamaged > 0) {	
+				return generateHealthCommentary(beai.myCurrentMove, isP1); //healthPositive
 			}
-			else if(Math.abs(beai.deltaHp) > 60 && beai.p2_gotDamaged > 0) {	
+			else if(Math.abs(beai.deltaHp) > 60 && beai.p1_gotDamaged > 0) {	//healthNegative
 				return generateHealthCommentary(beai.myCurrentMove, isP1);
 			}
 			else {
 				//diff less than 60 OR noone did damage
-				return chat[getRandomNumber(chat.length)];	
+				return generalCommentary[getRandomNumber(generalCommentary.length)];	//generalComment
 			}	
 		} 
 		else {
 			if (Math.abs(beai.deltaHp) > 60)
 			{
-				return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + actionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)] + ".";
+				return Skillbased_healthCommentary(actionRealName)	;		
 			}
 			else
 			{
-				return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";			
+				return Skillbased_generalCommentary(actionRealName);
 			}
 		}
 
 	}
+	
+	
+	public static String  Skillbased_healthCommentary(String  actionRealName) {
+		return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + actionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)] + ".";	
+		}
+	
+	public static String  Skillbased_generalCommentary(String  actionRealName) {
+		return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";			
+		}
+	
 	
 	public static String  generateHealthQuestion(String  recommendedActionRealName) {
 		return healthForwardQuestion[getRandomNumber(healthForwardQuestion.length)] + " " + recommendedActionRealName + healthBackwardQuestion[getRandomNumber(healthBackwardQuestion.length)];
@@ -337,16 +347,11 @@ public class  TTSSkillMap_Common {
 	}
 	
 	public static String  generateHealthCommentary(String  actionRealName, boolean judgement) {
-		if (actionRealName == "Default") {
-			if (judgement) {	
+		if (judgement) {	
 				return healthPositiveCommentary[getRandomNumber(healthPositiveCommentary.length)];			
-			} else {
-				return healthNegativeCommentary[getRandomNumber(healthNegativeCommentary.length)];				
-			}
 		} else {
-			return actionForwardPositiveCommentary[getRandomNumber(actionForwardPositiveCommentary.length)] + " " + actionRealName + actionBackwardPositiveCommentary[getRandomNumber(actionBackwardPositiveCommentary.length)] + ".";
+				return healthNegativeCommentary[getRandomNumber(healthNegativeCommentary.length)];				
 		}
-		
 	}
 	
 	public static String  generateBeginCommentary(){
