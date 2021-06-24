@@ -1,5 +1,6 @@
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 import java.util.logging.Logger;
+
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.cloud.FirestoreClient;
 
 import aiinterface.CommandCenter;
 import enumerate.Action;
@@ -108,6 +115,7 @@ public class gBEAI implements AIInterface {
 	TTSSkillMap_ZEN ttsSkillMap_Zen;
 	TTSSkillMap_LUD ttsSkillMap_Lud;
 	TTSSkillMap_Common ttsSkillMap_common;
+	FirebaseInit firebase;
 	String opponentActionPath;
 	String opponentCurrentAction;
 	String opponentPreviousAction;
@@ -434,6 +442,16 @@ public class gBEAI implements AIInterface {
 		cheering = false;
 		ttsSkillMap_Lud = new TTSSkillMap_LUD();
 		ttsSkillMap_Zen = new TTSSkillMap_ZEN();
+		
+		
+		firebase = new FirebaseInit();
+		try {
+			firebase.initialize();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		try {
 			BufferedWriter writer =
 	                  new BufferedWriter(new FileWriter(path2+"roundEnd.txt"));
@@ -675,9 +693,19 @@ public class gBEAI implements AIInterface {
 //		return comment;
 //		
 //	}
+	
 
 	@Override
 	public void roundEnd(int x, int y, int frame) {
+		
+		/*firebase = new FirebaseInit();
+		try {
+			firebase.initialize();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+		
 		
 		/*this.resultHpDiff[frameData.getRound()] = this.playerNumber ? x - y : y - x;
 
@@ -704,12 +732,20 @@ public class gBEAI implements AIInterface {
 			printPlayerWin = "ROUND "+(round+1)+" \n P1's won in Round "+round;
 			round++;
 			roundP1won++;
+			if(playerNumber) {
+				firebase.UpdateDataP1(true, false);
+			}
+			
 		}
 		if(deltaHp < 0)
 		{
 			printPlayerWin = "ROUND "+(round+1)+" \n P2's won in Round "+round;
 			round++;
 			roundP2won++;
+			if(playerNumber) {
+				firebase.UpdateDataP1(false, true);
+			}
+			
 		}
 		try {
 			BufferedWriter writer =
