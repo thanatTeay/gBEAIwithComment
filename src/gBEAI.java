@@ -115,7 +115,7 @@ public class gBEAI implements AIInterface {
 	TTSSkillMap_ZEN ttsSkillMap_Zen;
 	TTSSkillMap_LUD ttsSkillMap_Lud;
 	TTSSkillMap_Common ttsSkillMap_common;
-	FirebaseInit firebase;
+	//FirebaseInit firebase;
 	String opponentActionPath;
 	String opponentCurrentAction;
 	String opponentPreviousAction;
@@ -337,7 +337,8 @@ public class gBEAI implements AIInterface {
 		{
 			 P1 = "LOSE";
 			 P2 = "WIN";
-			 theWinner = "The winner of this game is Lud";
+			 //theWinner = "The winner of this game is Lud";
+			 theWinner = "The winner of this game is RedZEN";
 		}
 		//System.out.println("end");
 		try {
@@ -444,13 +445,13 @@ public class gBEAI implements AIInterface {
 		ttsSkillMap_Zen = new TTSSkillMap_ZEN();
 		
 		
-		firebase = new FirebaseInit();
+		/*firebase = new FirebaseInit();
 		try {
 			firebase.initialize();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
 		
 		try {
 			BufferedWriter writer =
@@ -733,7 +734,7 @@ public class gBEAI implements AIInterface {
 			round++;
 			roundP1won++;
 			if(playerNumber) {
-				firebase.UpdateDataP1(true, false);
+				//firebase.UpdateDataP1(true, false);
 			}
 			
 		}
@@ -743,7 +744,7 @@ public class gBEAI implements AIInterface {
 			round++;
 			roundP2won++;
 			if(playerNumber) {
-				firebase.UpdateDataP1(false, true);
+				//firebase.UpdateDataP1(false, true);
 			}
 			
 		}
